@@ -16,7 +16,5 @@ def run_game():
                                                                            #main loop for game
     while True:
         gf.check_events()                                                             #checking for event from screen
-        screen.fill(ai_settings.bg_color)
-        my_ship.blitme()
-        pygame.display.flip()
+        gf.update_screen(ai_settings,screen,my_ship)
 run_game()
