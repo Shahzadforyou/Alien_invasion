@@ -4,3 +4,4 @@ class Setting():
         self.width = 1200
         self.length = 700
         self.bg_color = (230,230,230)
+        self.ship_speed = 1.5
