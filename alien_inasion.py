@@ -1,4 +1,3 @@
-import sys
 import pygame
 from setting import Setting
 from ship import Ship
@@ -15,6 +14,7 @@ def run_game():
         #settin background color
                                                                            #main loop for game
     while True:
-        gf.check_events()                                                             #checking for event from screen
+        gf.check_events(my_ship)     
+        my_ship.update()                                                        #checking for event from screen
         gf.update_screen(ai_settings,screen,my_ship)
 run_game()
