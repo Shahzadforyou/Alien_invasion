@@ -2,6 +2,7 @@ import pygame
 from setting import Setting
 from ship import Ship
 import game_func as gf
+from pygame.sprite import Group
 
 def run_game():
     pygame.init()   
@@ -11,10 +12,12 @@ def run_game():
     pygame.display.set_caption("Alien Invasion")
     #make a ship
     my_ship = Ship(ai_settings,screen)        
-        #settin background color
+    #make group to store bullet in
+    bullets = Group()
                                                                              #main loop for game
     while True:
-        gf.check_events(my_ship)     
+        gf.check_events(ai_settings,screen,my_ship,bullets)     
         my_ship.update()                                                     #checking for event from screen
-        gf.update_screen(ai_settings,screen,my_ship)
+        bullets.update()
+        gf.update_screen(ai_settings,screen,my_ship,bullets)
 run_game()

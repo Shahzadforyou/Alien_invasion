@@ -1,7 +1,7 @@
 import pygame
 import sys
-
-def check_keydown_events(event,my_ship):
+from bullet import Bullet
+def check_keydown_events(event,ai_settings,screen,my_ship,bullets):
     if event.key == pygame.K_RIGHT:
         my_ship.moving_right = True
     elif event.key == pygame.K_LEFT:
@@ -10,6 +10,10 @@ def check_keydown_events(event,my_ship):
         my_ship.moving_up = True
     elif event.key == pygame.K_DOWN:
         my_ship.moving_down = True
+    elif event.key == pygame.K_SPACE:
+        #create new bullet and add to bullet group
+        new_bullet = Bullet(ai_settings,screen,my_ship)
+        bullets.add(new_bullet)
 
 
 def check_keyup_events(event,my_ship):
@@ -24,18 +28,22 @@ def check_keyup_events(event,my_ship):
     
 
 
-def check_events(my_ship):
+def check_events(ai_settings,screen,my_ship,bullets):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
         elif event.type == pygame.KEYDOWN:
-            check_keydown_events(event,my_ship)
+            check_keydown_events(event,ai_settings,screen,my_ship,bullets)
         elif event.type == pygame.KEYUP:
             check_keyup_events(event,my_ship)
         
 
-def update_screen(ai_settings,screen,my_ship):
+def update_screen(ai_settings,screen,my_ship,bullets):
     # screen.fill(ai_settings.bg_color)
     screen.fill(ai_settings.gradient_bottom)
+
+    #Redraw all bullet behind ships and aliens
+    for bullet in bullets.sprites():
+        bullet.draw_bullet()
     my_ship.blitme()
     pygame.display.flip()
