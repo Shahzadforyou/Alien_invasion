@@ -19,5 +19,10 @@ def run_game():
         gf.check_events(ai_settings,screen,my_ship,bullets)     
         my_ship.update()                                                     #checking for event from screen
         bullets.update()
+        #getting rid of  bullets
+        for bullet in bullets.copy():
+            if bullet.rect.bottom <= 0:
+                bullet.remove(bullet)
+                print(len(bullets))
         gf.update_screen(ai_settings,screen,my_ship,bullets)
-run_game()
+run_game() 

@@ -19,11 +19,7 @@ class Ship():
         self.rect.centerx = self.screen_rect.centerx
         self.rect.bottom = self.screen_rect.bottom
         
-        #Bullet Settings
-        self.bullet_speed = 1
-        self.bullet_width = 3
-        self.bullet_height = 15
-        self.bullet_color = 60,60,60
+
         
         #movement flag
         self.moving_right = False
