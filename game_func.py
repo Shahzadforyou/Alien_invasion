@@ -37,6 +37,10 @@ def check_events(ai_settings,screen,my_ship,bullets):
             check_keydown_events(event,ai_settings,screen,my_ship,bullets)
         elif event.type == pygame.KEYUP:
             check_keyup_events(event,my_ship)
+def update_bullets(bullets):
+    for bullet in bullets.copy():
+        if bullet.rect.bottom <= 0:
+            bullets.remove(bullet)
         
 
 def update_screen(ai_settings,screen,my_ship,bullets):
