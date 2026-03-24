@@ -22,7 +22,6 @@ def run_game():
         #getting rid of  bullets
         for bullet in bullets.copy():
             if bullet.rect.bottom <= 0:
-                bullet.remove(bullet)
-                print(len(bullets))
+                bullets.remove(bullet)
         gf.update_screen(ai_settings,screen,my_ship,bullets)
 run_game() 
