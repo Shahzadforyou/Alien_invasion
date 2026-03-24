@@ -8,7 +8,8 @@ from alien import Alien
 def run_game():
     pygame.init()   
     ai_settings = Setting()   
-                                                                            #initilizing gaming environment and screen
+
+    
     screen = pygame.display.set_mode((ai_settings.width,ai_settings.length))
     pygame.display.set_caption("Alien Invasion")
     #make a ship
@@ -25,5 +26,5 @@ def run_game():
         #getting rid of  bullets
         gf.update_bullets(bullets)
         
-        gf.update_screen(ai_settings,screen,my_ship,bullets)
+        gf.update_screen(ai_settings,screen,my_ship,alien,bullets)
 run_game() 

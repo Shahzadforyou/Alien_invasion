@@ -6,7 +6,7 @@ class Ship():
         self.ai_settings = ai_setting
 
         #loading image of ship
-        self.image = pygame.image.load("spaceship.1.png")
+        self.image = pygame.image.load("./images/mainspaceship.png")
         self.image = pygame.transform.scale(self.image, (150, 140))
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
