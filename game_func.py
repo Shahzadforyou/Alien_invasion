@@ -10,9 +10,11 @@ def check_keydown_events(event,ai_settings,screen,my_ship,bullets):
         my_ship.moving_up = True
     elif event.key == pygame.K_DOWN:
         my_ship.moving_down = True
+    elif event.key == pygame.K_q:
+        sys.exit()
     elif event.key == pygame.K_SPACE:
         fire_bullets(ai_settings,screen,my_ship,bullets)
-
+#function for firing bullets
 def fire_bullets(ai_settings,screen,my_ship,bullets):
     if len(bullets) < ai_settings.bullet_allowed:
         new_bullet = Bullet(ai_settings,screen,my_ship)
@@ -34,10 +36,13 @@ def check_events(ai_settings,screen,my_ship,bullets):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
+
         elif event.type == pygame.KEYDOWN:
             check_keydown_events(event,ai_settings,screen,my_ship,bullets)
         elif event.type == pygame.KEYUP:
             check_keyup_events(event,my_ship)
+
+#function for removing bullets
 def update_bullets(bullets):
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
