@@ -20,8 +20,6 @@ def run_game():
         my_ship.update()                                                     #checking for event from screen
         bullets.update()
         #getting rid of  bullets
-        for bullet in bullets.copy():
-            if bullet.rect.bottom <= 0:
-                bullets.remove(bullet)
+        gf.update_bullets(bullets)
         gf.update_screen(ai_settings,screen,my_ship,bullets)
 run_game() 

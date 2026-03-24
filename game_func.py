@@ -11,12 +11,13 @@ def check_keydown_events(event,ai_settings,screen,my_ship,bullets):
     elif event.key == pygame.K_DOWN:
         my_ship.moving_down = True
     elif event.key == pygame.K_SPACE:
-        #create new bullet and add to bullet group
-        if len(bullets) < ai_settings.bullet_allowed:
-            new_bullet = Bullet(ai_settings,screen,my_ship)
-            bullets.add(new_bullet)
+        fire_bullets(ai_settings,screen,my_ship,bullets)
 
-
+def fire_bullets(ai_settings,screen,my_ship,bullets):
+    if len(bullets) < ai_settings.bullet_allowed:
+        new_bullet = Bullet(ai_settings,screen,my_ship)
+        bullets.add(new_bullet)
+    
 def check_keyup_events(event,my_ship):
     if event.key == pygame.K_RIGHT:
         my_ship.moving_right = False

@@ -12,4 +12,4 @@ class Setting():
         self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = (0, 255, 0)
-        self.bullet_allowed = 1
+        self.bullet_allowed = 4
