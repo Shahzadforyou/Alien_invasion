@@ -17,7 +17,7 @@ def run_game():
     #make group to store bullet in
     bullets = Group()
     #make an alien
-    alien = Alien(ai_settings,screen)
+    alien = Group()
     while True:
         gf.check_events(ai_settings,screen,my_ship,bullets)     
         my_ship.update()                                                    

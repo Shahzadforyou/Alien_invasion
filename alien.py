@@ -10,18 +10,20 @@ class Alien(Sprite):
         
 
         #create alien 
-        self.img = pygame.image.load('./images/alienj.jpg')
+        self.img = pygame.image.load('./images/alien.png')
+        self.img = pygame.transform.scale(self.img, (150, 140))
         self.rect = self.img.get_rect()
         self.screen_rect = screen.get_rect()
 
         #Start each new alien near the top left of screen
 
-        self.rect.x = self.screen_rect.centerx
-        self.rect.y = self.rect.height
+        # Start each new alien near the top-left of screen
+        self.rect.x = self.rect.width  -150    # Left edge with offset
+        self.rect.y = self.rect.height -140    # Top edge with offset
 
-        #store the position of alien in float
 
-        self.x = float(self.rect.x)
+        # Store the position of alien in float
+        self.centerx = float(self.rect.centerx)
 
     def blitme(self):
         self.screen.blit(self.img,self.rect)
