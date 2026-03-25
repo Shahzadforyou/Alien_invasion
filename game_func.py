@@ -54,7 +54,7 @@ def create_fleet(ai_settings,screen,aliens):
     #spacing between each alien is equal to one alien width
     alien = Alien(ai_settings,screen)
     alien_width = alien.rect.width
-    available_space_x = ai_settings.screen_width - 2 * alien_width
+    available_space_x = ai_settings.width - 2 * alien_width
     number_alien_x = int(available_space_x/(2 * alien_width))
 
     #create the first row of aliens
@@ -62,18 +62,20 @@ def create_fleet(ai_settings,screen,aliens):
     for alien_number in range(number_alien_x):
         #create alien and place it in row
         alien = Alien(ai_settings,screen)
-        alien.x = alien_width + 2 * alien_width * alien_width
+        alien.x = alien_width + 2 * alien_width * alien_number
         alien.rect.x = alien.x
         aliens.add(alien)
         
 
-def update_screen(ai_settings,screen,my_ship,alien,bullets):
+def update_screen(ai_settings,screen,my_ship,aliens,bullets):
     # screen.fill(ai_settings.bg_color)
     screen.fill(ai_settings.gradient_bottom)
 
     #Redraw all bullet behind ships and aliens
     for bullet in bullets.sprites():
         bullet.draw_bullet()
+    for alien in aliens.sprites():
+        alien.blitme()
+        
     my_ship.blitme()
-    alien.blitme()
     pygame.display.flip()
