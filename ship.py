@@ -7,7 +7,7 @@ class Ship():
 
         #loading image of ship
         self.image = pygame.image.load("./images/mainspaceship.png")
-        self.image = pygame.transform.scale(self.image, (150, 140))
+        self.image = pygame.transform.scale(self.image, (100, 100))
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
         #starting new ship at the bottom of screen

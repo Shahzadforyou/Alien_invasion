@@ -5,7 +5,7 @@ class Setting():
         self.length = 700
         # self.bg_color = (230,230,230)
         self.bg_color = (10, 10, 30)      
-        self.gradient_bottom = (0, 0, 0)
+        self.gradient_bottom = (60, 10, 0)
         self.ship_speed = 1.5
         #Bullet Settings
         self.bullet_speed = 1.6
