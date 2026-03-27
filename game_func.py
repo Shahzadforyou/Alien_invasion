@@ -84,7 +84,8 @@ def create_fleet(ai_settings,screen,my_ship,aliens):
        for alien_number in range(number_alien_x):
         #create alien and place it in row
            create_alien(ai_settings,screen,alien_number,row_number,aliens)
-        
+def update_alien(aliens):
+    aliens.update()
 
 def update_screen(ai_settings,screen,my_ship,aliens,bullets):
     # screen.fill(ai_settings.bg_color)

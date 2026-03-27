@@ -15,3 +15,6 @@ class Setting():
         self.bullet_height = 15
         self.bullet_color = (0, 255, 0)
         self.bullet_allowed = 10
+        #alien setting
+        self.alein_speed_factor = 1
+        
