@@ -3,6 +3,8 @@ class Setting():
     def __init__(self):
         self.width = 1200
         self.length = 700
+        self.screen_height = self.length
+        self.screen_width = self.width
         # self.bg_color = (230,230,230)
         self.bg_color = (10, 10, 30)      
         self.gradient_bottom = (60, 10, 0)
