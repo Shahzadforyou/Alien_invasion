@@ -108,11 +108,13 @@ def check_fleet_edges(ai_settings,aliens):
             change_fleet_direction(ai_settings,aliens)
             break
 #check the sides of alien from alem.py
-def update_alien(ai_settings,aliens):
+def update_alien(ai_settings,aliens,my_ship):
     #check if the fleet is at an edge and update the position of all aliens in fleet
     check_fleet_edges(ai_settings,aliens)
     aliens.update()
-
+    #look for alien-ship collisions
+    if pygame.sprite.spritecollideany(my_ship,aliens):
+        print("Ship hit!!!")
 def update_screen(ai_settings,screen,my_ship,aliens,bullets):
     # screen.fill(ai_settings.bg_color)
     screen.fill(ai_settings.gradient_bottom)

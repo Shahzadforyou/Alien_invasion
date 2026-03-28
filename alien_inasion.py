@@ -27,6 +27,6 @@ def run_game():
     
         #getting rid of  bullets
         gf.update_bullets(bullets,aliens,ai_settings,screen,my_ship)
-        gf.update_alien(ai_settings,aliens)
+        gf.update_alien(ai_settings,aliens,my_ship)
         gf.update_screen(ai_settings,screen,my_ship,aliens,bullets)
 run_game() 
