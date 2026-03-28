@@ -44,10 +44,13 @@ def check_events(ai_settings,screen,my_ship,bullets):
             check_keyup_events(event,my_ship)
 
 #function for removing bullets
-def update_bullets(bullets):
+def update_bullets(bullets,aliens,ai_settings,screen,my_ship):
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
+    #check for any bullet that hit aliens
+    #if so get rid of the bullet and the alien
+    collisions = pygame.sprite.groupcollide(bullets,aliens,True,True)
 def get_alien_number_x(ai_settings,alien_width):
     #find number of alien that fit in a row
     #spacing between each alien is equal to one alien width
