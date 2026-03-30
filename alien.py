@@ -24,6 +24,7 @@ class Alien(Sprite):
 
         # Store the position of alien in float
         self.centerx = float(self.rect.centerx)
+        self.x = float(self.rect.x)
 
 
     def check_edges(self):
