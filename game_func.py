@@ -60,7 +60,7 @@ def check_bullet_alien_collisions(bullets,aliens,ai_settings,screen,my_ship):
         #Destroy existing bullets and create new fleet
         bullets.empty()
         create_fleet(ai_settings,screen,my_ship,aliens)
-def ship_hit
+
     
 def get_alien_number_x(ai_settings,alien_width):
     #find number of alien that fit in a row
