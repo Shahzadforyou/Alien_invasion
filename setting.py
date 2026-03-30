@@ -10,8 +10,8 @@ class Setting():
         self.gradient_bottom = (60, 10, 0)
         self.ship_speed = 1.5
         #Bullet Settings
-        self.bullet_speed = 2
-        self.bullet_width = 3
+        self.bullet_speed = 1.6
+        self.bullet_width = 30
         self.bullet_height = 15
         self.bullet_color = (0, 255, 0)
         self.bullet_allowed = 10
