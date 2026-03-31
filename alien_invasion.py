@@ -24,12 +24,15 @@ def run_game():
     ##create the fleet of aliens
     gf.create_fleet(ai_settings,screen,my_ship,aliens)
     while True:
-        gf.check_events(ai_settings,screen,my_ship,bullets)     
-        my_ship.update()                                                    
-        bullets.update()
-    
-        #getting rid of  bullets
-        gf.update_bullets(bullets,aliens,ai_settings,screen,my_ship)
-        gf.update_alien(ai_settings,aliens)
-        gf.update_screen(ai_settings,screen,my_ship,aliens,bullets)
+        gf.check_events(ai_settings, screen, my_ship, bullets)
+        
+        if stats.game_active:
+            my_ship.update()
+            bullets.update()
+            
+            # Getting rid of bullets
+            gf.update_bullets(bullets, aliens, ai_settings, screen, my_ship)
+            gf.update_alien(ai_settings, aliens, stats, screen, my_ship, bullets)
+        
+        gf.update_screen(ai_settings, screen, my_ship, aliens, bullets)
 run_game() 

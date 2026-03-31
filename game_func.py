@@ -82,7 +82,24 @@ def create_alien(ai_settings,screen,alien_number,row_number,aliens):
     alien.rect.x = alien.x
     alien.rect.y = alien.rect.height + 2 *alien.rect.height * row_number
     aliens.add(alien)
-    
+def ship_hit(ai_settings, aliens, stats, screen, my_ship, bullets):
+    """Respond to ship being hit by alien."""
+    if stats.ships_left > 0:
+        # Decrement ships_left.
+        stats.ships_left -= 1
+        
+        # Empty the list of aliens and bullets.
+        aliens.empty()
+        bullets.empty()
+        
+        # Create a new fleet and center the ship.
+        create_fleet(ai_settings, screen, my_ship, aliens)
+        my_ship.center_ship()
+        
+        # Pause.
+        sleep(0.5)
+    else:
+        stats.game_active = False
 def create_fleet(ai_settings,screen,my_ship,aliens):
     #create a full fleet of aliens
     #create a alien and find the number of aliens in row
@@ -111,10 +128,26 @@ def check_fleet_edges(ai_settings,aliens):
             change_fleet_direction(ai_settings,aliens)
             break
 #check the sides of alien from alem.py
-def update_alien(ai_settings,aliens):
+def update_alien(ai_settings,aliens,stats,screen,my_ship,bullets):
     #check if the fleet is at an edge and update the position of all aliens in fleet
     check_fleet_edges(ai_settings,aliens)
     aliens.update()
+    
+    # Check for alien-ship collisions
+    if pygame.sprite.spritecollideany(my_ship, aliens):
+        ship_hit(ai_settings, aliens, stats, screen, my_ship, bullets)
+    
+    # Check for aliens reaching the bottom of the screen
+    check_aliens_bottom(ai_settings, aliens, stats, screen, my_ship, bullets)
+
+def check_aliens_bottom(ai_settings, aliens, stats, screen, my_ship, bullets):
+    """Check if any aliens have reached the bottom of the screen."""
+    screen_rect = screen.get_rect()
+    for alien in aliens.sprites():
+        if alien.rect.bottom >= screen_rect.bottom:
+            # Treat this the same as ship being hit
+            ship_hit(ai_settings, aliens, stats, screen, my_ship, bullets)
+            break
 
 def update_screen(ai_settings,screen,my_ship,aliens,bullets):
     # screen.fill(ai_settings.bg_color)
